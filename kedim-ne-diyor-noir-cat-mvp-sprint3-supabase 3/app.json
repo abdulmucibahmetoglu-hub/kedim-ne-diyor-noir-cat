@@ -4,6 +4,7 @@
     "slug": "kedim-ne-diyor-noir-cat",
     "version": "1.0.0",
     "orientation": "portrait",
+    "icon": "./assets/icon.png",
     "scheme": "kedimnediyor",
     "userInterfaceStyle": "dark",
     "newArchEnabled": true,
@@ -18,7 +19,11 @@
     },
     "android": {
       "package": "com.noircat.kedimnediyor",
-      "permissions": ["RECORD_AUDIO", "CAMERA", "READ_MEDIA_IMAGES"]
+      "permissions": ["RECORD_AUDIO", "CAMERA", "READ_MEDIA_IMAGES"],
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#050505"
+      }
     },
     "plugins": ["expo-router"],
     "experiments": {
