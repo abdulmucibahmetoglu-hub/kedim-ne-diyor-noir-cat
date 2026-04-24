@@ -6,7 +6,7 @@ Bu sürümde gerçek AI modeli yoktur. Miyav analizi şimdilik mock analiz mant�
 
 ## Gereksinimler
 
-- Node.js 20 veya üzeri
+- Node.js 22 LTS önerilir (`.nvmrc` dosyası `22` olarak ayarlı)
 - npm
 - Expo Go veya iOS/Android simülatörü
 
@@ -16,6 +16,8 @@ Bu sürümde gerçek AI modeli yoktur. Miyav analizi şimdilik mock analiz mant�
 npm install
 npx expo start
 ```
+
+Node 24/25 ile Expo CLI otomatik port taramasında hata verebilir. Böyle bir durumda Node 22 LTS'e geçip komutları tekrar çalıştır.
 
 Metro açıldıktan sonra terminaldeki QR kodu Expo Go ile okutabilir ya da `i`, `a`, `w` kısayollarıyla iOS, Android veya web hedefini başlatabilirsin.
 

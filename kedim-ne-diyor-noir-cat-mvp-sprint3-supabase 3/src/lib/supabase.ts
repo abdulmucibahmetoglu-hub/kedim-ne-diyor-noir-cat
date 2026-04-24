@@ -25,10 +25,12 @@ const hasValidSupabaseUrl = isValidHttpsUrl(supabaseUrl);
 const hasPublicKey = Boolean(supabaseAnonKey && !looksLikeSecretKey(supabaseAnonKey));
 
 export const isSupabaseConfigured = hasSupabaseEnv && hasValidSupabaseUrl && hasPublicKey;
+const clientUrl = isSupabaseConfigured && supabaseUrl ? supabaseUrl : "https://placeholder.supabase.co";
+const clientAnonKey = isSupabaseConfigured && supabaseAnonKey ? supabaseAnonKey : "placeholder";
 
 export const supabase = createClient(
-  isSupabaseConfigured ? supabaseUrl : "https://placeholder.supabase.co",
-  isSupabaseConfigured ? supabaseAnonKey : "placeholder",
+  clientUrl,
+  clientAnonKey,
   {
     auth: {
       storage: AsyncStorage,
