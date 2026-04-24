@@ -138,6 +138,20 @@ Yayın checklistleri:
 
 RevenueCat bağlanmadan önce App Store Connect ve Google Play Console içinde subscription product kayıtları hazırlanmalı, RevenueCat dashboard içinde `premium` entitlement ve `monthly`, `yearly`, `lifetime` paketleri eşleştirilmelidir.
 
+## Sprint 7 - Görsel Hazırlık Paketi
+
+App Store, Google Play ve sosyal medya yayınları için görsel plan ve üretim promptları eklendi. Bu sprintte gerçek görsel üretilmez; yalnızca üretim briefleri, screenshot metinleri ve reklam metinleri hazırlanır.
+
+Görsel hazırlık dosyaları:
+
+- `store/visual-assets-plan-tr.md`
+- `store/screenshot-copy-tr.md`
+- `store/social-ad-copy-tr.md`
+- `assets/icon-generation-prompt.md`
+- `assets/splash-generation-prompt.md`
+
+Noir Cat görsel dili korunur: siyah lüks zemin, altın minimal kedi/pati/ses dalgası, krem destek metin ve premium yüksek kontrast.
+
 ## Kontrol Komutları
 
 ```bash
