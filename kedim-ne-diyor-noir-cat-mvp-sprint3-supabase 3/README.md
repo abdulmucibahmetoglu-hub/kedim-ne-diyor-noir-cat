@@ -152,6 +152,8 @@ Görsel hazırlık dosyaları:
 
 Noir Cat görsel dili korunur: siyah lüks zemin, altın minimal kedi/pati/ses dalgası, krem destek metin ve premium yüksek kontrast.
 
+Final splash screen eklendi: `assets/splash.png`. Expo splash ayarları `contain` resize mode ve `#050505` arka plan rengiyle bağlandı.
+
 ## Kontrol Komutları
 
 ```bash
