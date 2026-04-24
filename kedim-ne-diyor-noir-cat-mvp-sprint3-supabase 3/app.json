@@ -1,0 +1,28 @@
+{
+  "expo": {
+    "name": "Kedim Ne Diyor?",
+    "slug": "kedim-ne-diyor-noir-cat",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "kedimnediyor",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.noircat.kedimnediyor",
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "Miyav kaydı ve analiz için mikrofon erişimi gerekir.",
+        "NSCameraUsageDescription": "Kedi fotoğrafı ve davranış analizi için kamera erişimi gerekir.",
+        "NSPhotoLibraryUsageDescription": "Kedi profil fotoğrafı seçmek için fotoğraf erişimi gerekir."
+      }
+    },
+    "android": {
+      "package": "com.noircat.kedimnediyor",
+      "permissions": ["RECORD_AUDIO", "CAMERA", "READ_MEDIA_IMAGES"]
+    },
+    "plugins": ["expo-router"],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
