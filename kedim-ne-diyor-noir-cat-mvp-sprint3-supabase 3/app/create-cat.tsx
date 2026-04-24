@@ -16,13 +16,18 @@ export default function CreateCatProfileScreen() {
 
   async function submit() {
     setLoading(true);
-    const { data, error, demo } = await createCatProfile({
+    const profile = {
       name,
       breed,
       age: 2,
       weight: 4.8,
       food_type: "Kuru mama",
-      notes: demo ? "Demo mod" : "Supabase kaydı"
+      notes: "İlk profil"
+    };
+
+    const { data, error, demo } = await createCatProfile({
+      ...profile,
+      notes: profile.notes
     });
 
     setLoading(false);
@@ -32,7 +37,7 @@ export default function CreateCatProfileScreen() {
       return;
     }
 
-    setCat(data);
+    setCat(demo ? { ...data, notes: "Demo mod" } : data);
     router.replace("/(tabs)/home");
   }
 
