@@ -77,6 +77,29 @@ RevenueCat entegrasyonu henüz bağlanmadı. Bunun için placeholder servis dosy
 src/services/premiumService.ts
 ```
 
+## Sprint 5 - Yayın Hazırlık Paketi
+
+App Store ve Google Play yayın hazırlığı için Türkçe mağaza metinleri, hukuki taslaklar ve görsel üretim planları eklendi.
+
+Mağaza dosyaları:
+
+- `store/app-store-description-tr.md`
+- `store/google-play-description-tr.md`
+- `store/keywords-tr.md`
+- `store/release-notes-tr.md`
+- `store/privacy-policy-tr.md`
+- `store/terms-of-use-tr.md`
+- `store/screenshots-plan-tr.md`
+
+Asset placeholder dosyaları:
+
+- `assets/icon-placeholder.md`
+- `assets/splash-placeholder.md`
+
+Hukuki metinler taslaktır. App Store veya Google Play yayını öncesinde gizlilik politikası ve kullanım şartları hukuki danışmanlıkla gözden geçirilmelidir.
+
+Sprint 5 paketi gerçek ödeme entegrasyonu eklemez. RevenueCat ileride bağlanacak şekilde Sprint 4 placeholder servisi korunur.
+
 ## Kontrol Komutları
 
 ```bash
