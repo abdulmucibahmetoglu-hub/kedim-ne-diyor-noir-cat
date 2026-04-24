@@ -4,6 +4,20 @@ const PREMIUM_STATUS_KEY = "kedim-ne-diyor:premium-status";
 const DAILY_ANALYSES_KEY = "kedim-ne-diyor:daily-analyses";
 const FREE_DAILY_ANALYSIS_LIMIT = 3;
 
+export const REVENUECAT_ENTITLEMENT_ID = "premium";
+export const REVENUECAT_PACKAGE_IDS = {
+  monthly: "monthly",
+  yearly: "yearly",
+  lifetime: "lifetime"
+} as const;
+
+export const revenueCatConfig = {
+  iosApiKey: process.env.EXPO_PUBLIC_REVENUECAT_IOS_API_KEY || "",
+  androidApiKey: process.env.EXPO_PUBLIC_REVENUECAT_ANDROID_API_KEY || "",
+  entitlementId: REVENUECAT_ENTITLEMENT_ID,
+  packageIds: REVENUECAT_PACKAGE_IDS
+};
+
 const premiumFeatures = new Set([
   "photo-video-analysis",
   "multi-cat-profiles",
@@ -34,15 +48,20 @@ async function getDailyUsage(): Promise<DailyUsage> {
 }
 
 export async function getPremiumStatus() {
+  // TODO RevenueCat: Purchases.getCustomerInfo() ile "premium" entitlement aktif mi kontrol et.
+  // Mock akış App Store/TestFlight hazırlığı tamamlanana kadar local storage kullanır.
   return (await AsyncStorage.getItem(PREMIUM_STATUS_KEY)) === "true";
 }
 
 export async function activateMockPremium() {
+  // TODO RevenueCat: Purchases.purchasePackage(monthly/yearly/lifetime) sonucunda entitlement doğrula.
+  // Gerçek API key veya ödeme akışı bu sprintte eklenmez.
   await AsyncStorage.setItem(PREMIUM_STATUS_KEY, "true");
   return true;
 }
 
 export async function restorePurchases() {
+  // TODO RevenueCat: Purchases.restorePurchases() çağır ve dönen customerInfo içinde "premium" entitlement kontrol et.
   return activateMockPremium();
 }
 

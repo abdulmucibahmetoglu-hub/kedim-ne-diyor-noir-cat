@@ -100,6 +100,44 @@ Hukuki metinler taslaktır. App Store veya Google Play yayını öncesinde gizli
 
 Sprint 5 paketi gerçek ödeme entegrasyonu eklemez. RevenueCat ileride bağlanacak şekilde Sprint 4 placeholder servisi korunur.
 
+## Sprint 6 - EAS ve TestFlight Hazırlığı
+
+RevenueCat hazırlığı üretim yapısına yaklaştırıldı, ancak gerçek ödeme entegrasyonu hala mock çalışır. Gerçek RevenueCat API keyleri repo içine yazılmamalı; `.env` veya EAS secrets üzerinden verilmelidir.
+
+RevenueCat hazırlığı:
+
+- Entitlement adı: `premium`
+- Paketler: `monthly`, `yearly`, `lifetime`
+- Placeholder env alanları: `EXPO_PUBLIC_REVENUECAT_IOS_API_KEY`, `EXPO_PUBLIC_REVENUECAT_ANDROID_API_KEY`
+- TODO notları: `src/services/premiumService.ts`
+
+EAS build profilleri `eas.json` içinde hazırdır:
+
+- `development`: development client ve internal dağıtım
+- `preview`: internal test build
+- `production`: App Store/TestFlight ve Google Play için production build
+
+TestFlight hazırlığı:
+
+```bash
+eas login
+eas build --platform ios --profile production
+```
+
+Google Play internal testing hazırlığı:
+
+```bash
+eas login
+eas build --platform android --profile production
+```
+
+Yayın checklistleri:
+
+- `store/testflight-checklist-tr.md`
+- `store/google-play-checklist-tr.md`
+
+RevenueCat bağlanmadan önce App Store Connect ve Google Play Console içinde subscription product kayıtları hazırlanmalı, RevenueCat dashboard içinde `premium` entitlement ve `monthly`, `yearly`, `lifetime` paketleri eşleştirilmelidir.
+
 ## Kontrol Komutları
 
 ```bash
