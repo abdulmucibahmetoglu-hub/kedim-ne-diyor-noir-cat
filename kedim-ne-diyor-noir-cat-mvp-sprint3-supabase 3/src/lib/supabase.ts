@@ -5,11 +5,30 @@ import { createClient } from "@supabase/supabase-js";
 const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY;
 
-export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey);
+function isValidHttpsUrl(value?: string) {
+  if (!value) return false;
+
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
+function looksLikeSecretKey(value?: string) {
+  return Boolean(value?.toLowerCase().includes("service_role") || value?.toLowerCase().includes("secret"));
+}
+
+const hasSupabaseEnv = Boolean(supabaseUrl && supabaseAnonKey);
+const hasValidSupabaseUrl = isValidHttpsUrl(supabaseUrl);
+const hasPublicKey = Boolean(supabaseAnonKey && !looksLikeSecretKey(supabaseAnonKey));
+
+export const isSupabaseConfigured = hasSupabaseEnv && hasValidSupabaseUrl && hasPublicKey;
 
 export const supabase = createClient(
-  supabaseUrl || "https://placeholder.supabase.co",
-  supabaseAnonKey || "placeholder",
+  isSupabaseConfigured ? supabaseUrl : "https://placeholder.supabase.co",
+  isSupabaseConfigured ? supabaseAnonKey : "placeholder",
   {
     auth: {
       storage: AsyncStorage,
@@ -21,10 +40,24 @@ export const supabase = createClient(
 );
 
 export async function testSupabaseConnection() {
-  if (!isSupabaseConfigured) {
+  if (!hasSupabaseEnv) {
     return {
       ok: false,
-      message: ".env dosyasında Supabase URL veya anon key eksik."
+      message: ".env dosyası eksik veya Supabase bilgileri boş. Demo mod aktif."
+    };
+  }
+
+  if (!hasValidSupabaseUrl) {
+    return {
+      ok: false,
+      message: "EXPO_PUBLIC_SUPABASE_URL https:// ile başlayan geçerli bir Supabase URL olmalı."
+    };
+  }
+
+  if (!hasPublicKey) {
+    return {
+      ok: false,
+      message: "Sadece EXPO_PUBLIC_SUPABASE_ANON_KEY kullanılmalı. Secret veya service_role key mobil uygulamaya koyulmaz."
     };
   }
 

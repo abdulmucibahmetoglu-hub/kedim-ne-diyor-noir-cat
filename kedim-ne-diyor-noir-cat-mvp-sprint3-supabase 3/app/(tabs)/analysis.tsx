@@ -1,6 +1,6 @@
 import { Audio } from "expo-av";
 import { router } from "expo-router";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Alert, Pressable, StyleSheet, Text, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { GoldButton } from "@/components/GoldButton";
@@ -19,9 +19,15 @@ export default function AnalysisScreen() {
   const [recordingUri, setRecordingUri] = useState<string | null>(null);
   const [context, setContext] = useState("İlgi");
   const [seconds, setSeconds] = useState(0);
-  const timer = useRef<NodeJS.Timeout | null>(null);
+  const timer = useRef<ReturnType<typeof setInterval> | null>(null);
   const addAnalysis = useAppStore((s) => s.addAnalysis);
   const cat = useAppStore((s) => s.cat);
+
+  useEffect(() => {
+    return () => {
+      if (timer.current) clearInterval(timer.current);
+    };
+  }, []);
 
   async function startRecording() {
     try {
@@ -40,6 +46,7 @@ export default function AnalysisScreen() {
       setRecording(recording);
       setRecordingUri(null);
       setSeconds(0);
+      if (timer.current) clearInterval(timer.current);
       timer.current = setInterval(() => setSeconds((s) => s + 1), 1000);
     } catch (error) {
       Alert.alert("Kayıt başlatılamadı", "Mikrofon kaydı başlatılırken sorun oluştu.");
@@ -49,13 +56,26 @@ export default function AnalysisScreen() {
   async function stopRecording() {
     if (!recording) return;
     if (timer.current) clearInterval(timer.current);
-    await recording.stopAndUnloadAsync();
-    const uri = recording.getURI();
-    setRecording(null);
-    setRecordingUri(uri || null);
+    timer.current = null;
+
+    try {
+      await recording.stopAndUnloadAsync();
+      const uri = recording.getURI();
+      setRecordingUri(uri || null);
+      await Audio.setAudioModeAsync({ allowsRecordingIOS: false, playsInSilentModeIOS: true });
+    } catch {
+      Alert.alert("Kayıt durdurulamadı", "Ses kaydı kapatılırken bir sorun oluştu. Lütfen tekrar dene.");
+    } finally {
+      setRecording(null);
+    }
   }
 
   async function analyze() {
+    if (recording) {
+      Alert.alert("Kayıt devam ediyor", "Analizden önce kaydı durdurmalısın.");
+      return;
+    }
+
     const input = generateMockAnalysis(context, cat.id, recordingUri, seconds);
     const { data, error } = await saveAnalysis(input);
     if (error || !data) {
@@ -98,7 +118,7 @@ export default function AnalysisScreen() {
         </View>
       </PremiumCard>
 
-      <GoldButton title="Kaydı Analiz Et ve Veritabanına Kaydet" onPress={analyze} />
+      <GoldButton title="Kaydı Analiz Et ve Veritabanına Kaydet" onPress={analyze} disabled={Boolean(recording)} />
     </Screen>
   );
 }
