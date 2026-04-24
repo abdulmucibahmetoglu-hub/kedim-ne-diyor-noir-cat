@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { GoldButton } from "@/components/GoldButton";
 import { Header } from "@/components/Header";
 import { PremiumCard } from "@/components/PremiumCard";
@@ -11,6 +11,7 @@ import { useAppStore } from "@/store/appStore";
 
 export default function ProfileScreen() {
   const cat = useAppStore((s) => s.cat);
+  const isPremium = useAppStore((s) => s.isPremium);
 
   return (
     <Screen>
@@ -27,6 +28,24 @@ export default function ProfileScreen() {
       </PremiumCard>
 
       <Text style={styles.title}>Bakım Takvimi</Text>
+      <Pressable onPress={() => !isPremium && router.push("/premium")}>
+        <PremiumCard style={styles.lockedFeature}>
+          <View>
+            <Text style={styles.taskTitle}>Çoklu kedi profili</Text>
+            <Text style={styles.meta}>{isPremium ? "Premium ile açık" : "Premium kilitli"}</Text>
+          </View>
+          <Ionicons name={isPremium ? "checkmark-circle" : "lock-closed"} size={24} color={isPremium ? colors.success : colors.gold} />
+        </PremiumCard>
+      </Pressable>
+      <Pressable onPress={() => !isPremium && router.push("/premium")}>
+        <PremiumCard style={styles.lockedFeature}>
+          <View>
+            <Text style={styles.taskTitle}>Kediye özel AI hafıza</Text>
+            <Text style={styles.meta}>{isPremium ? "Mia için kişiselleştirme açık" : "Premium kilitli"}</Text>
+          </View>
+          <Ionicons name={isPremium ? "checkmark-circle" : "lock-closed"} size={24} color={isPremium ? colors.success : colors.gold} />
+        </PremiumCard>
+      </Pressable>
       {careTasks.map((task) => (
         <PremiumCard key={task.id} style={styles.task}>
           <View>
@@ -49,5 +68,6 @@ const styles = StyleSheet.create({
   meta: { color: colors.gray, marginTop: 4 },
   title: { color: colors.cream, fontSize: 26, fontWeight: "900", marginVertical: 14 },
   task: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginBottom: 9 },
+  lockedFeature: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginBottom: 9 },
   taskTitle: { color: colors.cream, fontSize: 17, fontWeight: "800" }
 });

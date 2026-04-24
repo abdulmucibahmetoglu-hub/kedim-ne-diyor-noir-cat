@@ -1,9 +1,9 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { PropsWithChildren } from "react";
-import { StyleSheet, ViewStyle } from "react-native";
+import { StyleProp, StyleSheet, ViewStyle } from "react-native";
 import { colors, radius, shadow } from "@/constants/theme";
 
-type Props = PropsWithChildren<{ style?: ViewStyle }>;
+type Props = PropsWithChildren<{ style?: StyleProp<ViewStyle> }>;
 
 export function PremiumCard({ children, style }: Props) {
   return (

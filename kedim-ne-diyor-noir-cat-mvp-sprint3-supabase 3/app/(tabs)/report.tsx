@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
+import { ActivityIndicator, Pressable, StyleSheet, Text, View } from "react-native";
 import { Header } from "@/components/Header";
 import { PremiumCard } from "@/components/PremiumCard";
 import { Screen } from "@/components/Screen";
@@ -11,6 +13,7 @@ import { useAppStore } from "@/store/appStore";
 export default function ReportScreen() {
   const [loading, setLoading] = useState(false);
   const setAnalyses = useAppStore((s) => s.setAnalyses);
+  const isPremium = useAppStore((s) => s.isPremium);
 
   useEffect(() => {
     async function load() {
@@ -42,6 +45,15 @@ export default function ReportScreen() {
         <Text style={styles.section}>Supabase Geçmiş</Text>
         <Text style={styles.text}>Bu ekran açıldığında meow_analyses tablosundan kayıtlar çekilir ve global state güncellenir.</Text>
       </PremiumCard>
+      <Pressable onPress={() => !isPremium && router.push("/premium")}>
+        <PremiumCard style={styles.lockedHistory}>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.section}>7 günden uzun analiz geçmişi</Text>
+            <Text style={styles.text}>{isPremium ? "Tüm geçmiş kayıtlarına erişim açık." : "Uzun dönem duygu haritası Premium ile açılır."}</Text>
+          </View>
+          <Ionicons name={isPremium ? "checkmark-circle" : "lock-closed"} size={24} color={isPremium ? colors.success : colors.gold} />
+        </PremiumCard>
+      </Pressable>
     </Screen>
   );
 }
@@ -54,5 +66,6 @@ const styles = StyleSheet.create({
   fill: { height: 8, backgroundColor: colors.gold, borderRadius: 10 },
   value: { color: colors.goldLight, width: 40, textAlign: "right" },
   section: { color: colors.cream, fontSize: 20, fontWeight: "800", marginBottom: 10 },
-  text: { color: colors.gray, fontSize: 16, lineHeight: 24 }
+  text: { color: colors.gray, fontSize: 16, lineHeight: 24 },
+  lockedHistory: { flexDirection: "row", alignItems: "center", gap: 12 }
 });

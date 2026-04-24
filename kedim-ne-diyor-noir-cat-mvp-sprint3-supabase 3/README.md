@@ -56,6 +56,27 @@ Mobil uygulamada yalnızca `EXPO_PUBLIC_SUPABASE_URL` ve `EXPO_PUBLIC_SUPABASE_A
 - Profil ve bakım takvimi
 - Premium teklif ekranı
 
+## Sprint 4 - Premium Kilitler
+
+Premium olmayan kullanıcılar günde 3 ücretsiz miyav analizi yapabilir. Hak dolduğunda analiz ekranı kullanıcıyı Premium teklifine yönlendirir. Kalan hak ana sayfada ve analiz ekranında gösterilir.
+
+Premium durum ve günlük analiz hakkı cihazdaki local storage içinde tutulur. Uygulama yeniden açıldığında premium durumu korunur.
+
+Premium kilitli özellikler:
+
+- Foto / Video Analizi
+- Çoklu kedi profili
+- 7 günden uzun analiz geçmişi
+- Kediye özel AI hafıza
+
+Premium ekranındaki planlar mock ödeme akışıyla çalışır. "3 Gün Ücretsiz Dene" veya plan kartlarına basınca kullanıcı premium olur; gerçek ödeme alınmaz. "Satın almayı geri yükle" de şimdilik mock restore yapar.
+
+RevenueCat entegrasyonu henüz bağlanmadı. Bunun için placeholder servis dosyası hazırdır:
+
+```text
+src/services/premiumService.ts
+```
+
 ## Kontrol Komutları
 
 ```bash

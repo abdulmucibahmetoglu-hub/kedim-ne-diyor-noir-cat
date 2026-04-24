@@ -22,12 +22,17 @@ export default function AnalysisScreen() {
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
   const addAnalysis = useAppStore((s) => s.addAnalysis);
   const cat = useAppStore((s) => s.cat);
+  const isPremium = useAppStore((s) => s.isPremium);
+  const remainingDailyAnalyses = useAppStore((s) => s.remainingDailyAnalyses);
+  const refreshDailyAnalyses = useAppStore((s) => s.refreshDailyAnalyses);
+  const consumeDailyAnalysis = useAppStore((s) => s.consumeDailyAnalysis);
 
   useEffect(() => {
+    refreshDailyAnalyses();
     return () => {
       if (timer.current) clearInterval(timer.current);
     };
-  }, []);
+  }, [refreshDailyAnalyses]);
 
   async function startRecording() {
     try {
@@ -76,6 +81,11 @@ export default function AnalysisScreen() {
       return;
     }
 
+    if (!isPremium && remainingDailyAnalyses !== null && remainingDailyAnalyses <= 0) {
+      router.push("/premium");
+      return;
+    }
+
     const input = generateMockAnalysis(context, cat.id, recordingUri, seconds);
     const { data, error } = await saveAnalysis(input);
     if (error || !data) {
@@ -84,6 +94,7 @@ export default function AnalysisScreen() {
     }
 
     addAnalysis(data);
+    await consumeDailyAnalysis();
     router.push({ pathname: "/analysis-result", params: { id: data.id } });
   }
 
@@ -92,6 +103,12 @@ export default function AnalysisScreen() {
       <Header badge="Ses + DB" />
       <Text style={styles.title}>Miyav Analizi</Text>
       <Text style={styles.subtitle}>Gerçek ses kaydı al, sonucu Supabase’e kaydet.</Text>
+      <PremiumCard style={styles.quotaCard}>
+        <Ionicons name={isPremium ? "infinite" : "hourglass-outline"} size={21} color={colors.goldLight} />
+        <Text style={styles.quotaText}>
+          {isPremium ? "Premium: sınırsız miyav analizi" : `Bugünkü ücretsiz analiz hakkın: ${remainingDailyAnalyses ?? 3}/3`}
+        </Text>
+      </PremiumCard>
 
       <Pressable style={[styles.mic, recording && styles.micActive]} onPress={recording ? stopRecording : startRecording}>
         <Ionicons name={recording ? "stop" : "mic"} size={58} color={colors.goldLight} />
@@ -118,7 +135,11 @@ export default function AnalysisScreen() {
         </View>
       </PremiumCard>
 
-      <GoldButton title="Kaydı Analiz Et ve Veritabanına Kaydet" onPress={analyze} disabled={Boolean(recording)} />
+      <GoldButton
+        title={!isPremium && remainingDailyAnalyses === 0 ? "Premium ile Sınırsız Analiz" : "Kaydı Analiz Et ve Veritabanına Kaydet"}
+        onPress={analyze}
+        disabled={Boolean(recording)}
+      />
     </Screen>
   );
 }
@@ -129,6 +150,8 @@ const styles = StyleSheet.create({
   mic: { width: 156, height: 156, borderRadius: 78, borderWidth: 1, borderColor: colors.border, alignSelf: "center", alignItems: "center", justifyContent: "center", backgroundColor: "rgba(214,168,90,0.08)", marginBottom: 14 },
   micActive: { backgroundColor: "rgba(214,168,90,0.18)" },
   tap: { color: colors.goldLight, textAlign: "center", marginBottom: 22, fontSize: 16, fontWeight: "700" },
+  quotaCard: { flexDirection: "row", alignItems: "center", gap: 10, paddingVertical: 14 },
+  quotaText: { color: colors.cream, fontWeight: "800", flex: 1 },
   section: { color: colors.cream, fontSize: 18, fontWeight: "800", marginBottom: 16 },
   chips: { flexDirection: "row", flexWrap: "wrap", gap: 10 },
   chip: { paddingHorizontal: 14, paddingVertical: 10, borderRadius: 999, backgroundColor: colors.surface, borderWidth: 1, borderColor: "rgba(255,255,255,0.08)" },
