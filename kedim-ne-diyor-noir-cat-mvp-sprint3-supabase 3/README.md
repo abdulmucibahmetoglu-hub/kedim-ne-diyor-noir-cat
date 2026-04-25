@@ -154,6 +154,17 @@ Noir Cat görsel dili korunur: siyah lüks zemin, altın minimal kedi/pati/ses d
 
 Final splash screen eklendi: `assets/splash.png`. Expo splash ayarları `contain` resize mode ve `#050505` arka plan rengiyle bağlandı.
 
+Final App Store screenshot seti hazırlandı. Teslim klasoru: `store/final-screenshots/`
+
+App Store Connect yukleme sirasi:
+
+1. `screenshot-01-home.png`
+2. `screenshot-02-analysis.png`
+3. `screenshot-03-result.png`
+4. `screenshot-04-mood-map.png`
+5. `screenshot-05-talk-to-cat.png`
+6. `screenshot-06-premium.png`
+
 ## Kontrol Komutları
 
 ```bash
