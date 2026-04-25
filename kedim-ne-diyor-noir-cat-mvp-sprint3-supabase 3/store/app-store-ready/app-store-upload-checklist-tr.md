@@ -16,6 +16,9 @@
 
 - Privacy policy URL gereksinimi karşılanmalı.
 - Terms of use URL gereksinimi karşılanmalı.
+  Yayina alinabilecek HTML tabani:
+  `store/app-store-ready/privacy-policy-tr.html`
+  `store/app-store-ready/terms-of-use-tr.html`
 
 ## Build ve Test
 
