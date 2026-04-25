@@ -22,7 +22,8 @@
         "NSMicrophoneUsageDescription": "Miyav kaydı ve analiz için mikrofon erişimi gerekir.",
         "NSCameraUsageDescription": "Kedi fotoğrafı ve davranış analizi için kamera erişimi gerekir.",
         "NSPhotoLibraryUsageDescription": "Kedi profil fotoğrafı seçmek için fotoğraf erişimi gerekir."
-      }
+      },
+      "buildNumber": "3"
     },
     "android": {
       "package": "com.noircat.kedimnediyor",
