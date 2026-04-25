@@ -1,0 +1,77 @@
+{
+  "configVersion": 0,
+  "apple": {
+    "version": "1.0",
+    "copyright": "2026 AbdulMucib Ahmetoglu",
+    "categories": [
+      "LIFESTYLE",
+      "UTILITIES"
+    ],
+    "release": {
+      "automaticRelease": false
+    },
+    "info": {
+      "en-US": {
+        "title": "Kedim Ne Diyor? (3a05b9)",
+        "subtitle": "AI Kedi Asistanı",
+        "description": "Kedim Ne Diyor?, kedinizin seslerini ve günlük davranışlarını daha iyi anlamanıza yardımcı olmak için tasarlanmış Noir Cat temalı premium bir kedi asistanıdır.\n\nMiyav kaydı alın, bağlam seçin ve uygulamanın mock AI analiz mantığıyla kedinizin ne anlatmaya çalışıyor olabileceğine dair anlaşılır yorumlar görün. Kedinizin ruh hali, davranış geçmişi ve bakım rutinleri tek bir zarif deneyimde buluşur.\n\nÖne çıkan özellikler:\n\n- AI destekli miyav analizi\n- Kediye özel AI hafıza\n- Duygu ve davranış geçmişi\n- Kedime Söyle\n- Kedi ses kütüphanesi\n- Bakım takvimi\n- Premium Noir Cat deneyimi\n\nPremium deneyimle sınırsız miyav analizi, kediye özel hafıza, gelişmiş duygu haritası, uzun dönem analiz geçmişi ve reklamsız kullanım sunulur.\n\nÖnemli uyarı: Bu uygulama eğlence ve bakım desteği amaçlıdır. Veteriner teşhisi veya tıbbi tavsiye yerine geçmez. Kedinizde hastalık, ağrı, iştahsızlık, davranış değişikliği veya acil bir belirti görürseniz veteriner hekime başvurun.",
+        "keywords": [
+          "kedi",
+          "miyav",
+          "kedi sesi",
+          "kedi bakımı",
+          "kedi asistanı",
+          "evcil hayvan",
+          "kedi davranışı",
+          "AI kedi",
+          "pet",
+          "kedi ruh hali"
+        ],
+        "releaseNotes": "Kedim Ne Diyor? ilk yayın hazırlık sürümü.\n\nBu sürümde Noir Cat temalı Türkçe mobil deneyim, miyav kaydı ve mock AI analiz akışı, analiz sonucu, kedi profili, duygu haritası, Kedime Söyle, kedi ses kütüphanesi, bakım takvimi, premium kilit sistemi ve günlük 3 ücretsiz analiz hakkı yer alır.\n\nNot: Bu uygulama eğlence ve bakım desteği amaçlıdır. Veteriner teşhisi veya tıbbi tavsiye yerine geçmez.",
+        "promoText": "Kedinin miyavlarını, ruh halini ve davranışlarını anlamaya yardımcı premium AI kedi asistanı.",
+        "marketingUrl": "https://github.com/abdulmucibahmetoglu-hub/kedim-ne-diyor-noir-cat",
+        "supportUrl": "https://github.com/abdulmucibahmetoglu-hub/kedim-ne-diyor-noir-cat/issues",
+        "privacyPolicyUrl": "https://github.com/abdulmucibahmetoglu-hub/kedim-ne-diyor-noir-cat/blob/main/kedim-ne-diyor-noir-cat-mvp-sprint3-supabase%203/store/app-store-ready/privacy-policy-tr.html",
+        "screenshots": {
+          "APP_IPHONE_65": [
+            "store/final-screenshots/screenshot-01-home.png",
+            "store/final-screenshots/screenshot-02-analysis.png",
+            "store/final-screenshots/screenshot-03-result.png",
+            "store/final-screenshots/screenshot-04-mood-map.png",
+            "store/final-screenshots/screenshot-05-talk-to-cat.png",
+            "store/final-screenshots/screenshot-06-premium.png"
+          ]
+        }
+      }
+    },
+    "advisory": {
+      "ageRatingOverride": "NONE",
+      "alcoholTobaccoOrDrugUseOrReferences": "NONE",
+      "contests": "NONE",
+      "gambling": false,
+      "gamblingSimulated": "NONE",
+      "horrorOrFearThemes": "NONE",
+      "kidsAgeBand": null,
+      "koreaAgeRatingOverride": "NONE",
+      "lootBox": false,
+      "matureOrSuggestiveThemes": "NONE",
+      "medicalOrTreatmentInformation": "NONE",
+      "profanityOrCrudeHumor": "NONE",
+      "sexualContentGraphicAndNudity": "NONE",
+      "sexualContentOrNudity": "NONE",
+      "unrestrictedWebAccess": false,
+      "violenceCartoonOrFantasy": "NONE",
+      "violenceRealistic": "NONE",
+      "violenceRealisticProlongedGraphicOrSadistic": "NONE",
+      "advertising": false,
+      "ageAssurance": false,
+      "ageRatingOverrideV2": "NONE",
+      "developerAgeRatingInfoUrl": null,
+      "gunsOrOtherWeapons": "NONE",
+      "healthOrWellnessTopics": false,
+      "messagingAndChat": false,
+      "parentalControls": false,
+      "userGeneratedContent": false
+    }
+  }
+}
