@@ -165,6 +165,28 @@ App Store Connect yukleme sirasi:
 5. `screenshot-05-talk-to-cat.png`
 6. `screenshot-06-premium.png`
 
+## Sprint 8 - App Store ve TestFlight Hazırlığı
+
+Bu sprintte odak yalnız iOS App Store ve TestFlight yayın hazırlığıdır. Google Play tarafı beklemede bırakılmıştır.
+
+App Store readiness dosyaları:
+
+- `store/app-store-ready/app-store-upload-checklist-tr.md`
+- `store/app-store-ready/testflight-steps-tr.md`
+- `store/app-store-ready/app-review-notes-tr.md`
+- `store/app-store-ready/app-privacy-answers-tr.md`
+- `store/app-store-ready/subscription-products-plan-tr.md`
+
+Bu paket:
+
+- App Store yükleme checklistini
+- Windows üzerinden TestFlight build adımlarını
+- Apple App Review not taslağını
+- App Store privacy form cevap taslağını
+- App Store Connect abonelik ürün planını
+
+tek yerde toplar.
+
 ## Kontrol Komutları
 
 ```bash
