@@ -31,7 +31,7 @@
         "promoText": "Kedinin miyavlarını, ruh halini ve davranışlarını anlamaya yardımcı premium AI kedi asistanı.",
         "marketingUrl": "https://github.com/abdulmucibahmetoglu-hub/kedim-ne-diyor-noir-cat",
         "supportUrl": "https://github.com/abdulmucibahmetoglu-hub/kedim-ne-diyor-noir-cat/issues",
-        "privacyPolicyUrl": "https://github.com/abdulmucibahmetoglu-hub/kedim-ne-diyor-noir-cat/blob/main/kedim-ne-diyor-noir-cat-mvp-sprint3-supabase%203/store/app-store-ready/privacy-policy-tr.html",
+        "privacyPolicyUrl": "https://raw.githubusercontent.com/abdulmucibahmetoglu-hub/kedim-ne-diyor-noir-cat/main/kedim-ne-diyor-noir-cat-mvp-sprint3-supabase%203/store/app-store-ready/privacy-policy-tr.html",
         "screenshots": {
           "APP_IPHONE_65": [
             "store/final-screenshots/screenshot-01-home.png",
@@ -40,6 +40,14 @@
             "store/final-screenshots/screenshot-04-mood-map.png",
             "store/final-screenshots/screenshot-05-talk-to-cat.png",
             "store/final-screenshots/screenshot-06-premium.png"
+          ],
+          "APP_IPAD_PRO_3GEN_129": [
+            "store/final-screenshots-ipad/screenshot-01-home.png",
+            "store/final-screenshots-ipad/screenshot-02-analysis.png",
+            "store/final-screenshots-ipad/screenshot-03-result.png",
+            "store/final-screenshots-ipad/screenshot-04-mood-map.png",
+            "store/final-screenshots-ipad/screenshot-05-talk-to-cat.png",
+            "store/final-screenshots-ipad/screenshot-06-premium.png"
           ]
         }
       }
