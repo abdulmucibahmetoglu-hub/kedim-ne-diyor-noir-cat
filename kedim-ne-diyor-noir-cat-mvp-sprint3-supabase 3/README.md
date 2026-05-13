@@ -69,9 +69,11 @@ Premium kilitli özellikler:
 - 7 günden uzun analiz geçmişi
 - Kediye özel AI hafıza
 
-Premium ekranındaki planlar mock ödeme akışıyla çalışır. "3 Gün Ücretsiz Dene" veya plan kartlarına basınca kullanıcı premium olur; gerçek ödeme alınmaz. "Satın almayı geri yükle" de şimdilik mock restore yapar.
+Premium ekranındaki planlar RevenueCat üzerinden App Store / Google Play satın alma akışına bağlanacak şekilde hazırlanmıştır. Üretim build'inde mock ödeme başarı mesajı gösterilmez; plan kartları gerçek mağaza satın alma sheet'ini açar.
 
-RevenueCat entegrasyonu henüz bağlanmadı. Bunun için placeholder servis dosyası hazırdır:
+`.env` olmadan geliştirme sırasında premium kilitlerini denemek için yalnızca development modunda görünen demo premium butonu kullanılabilir. Bu buton App Store build'inde görünmez.
+
+Premium servis dosyası:
 
 ```text
 src/services/premiumService.ts
@@ -98,18 +100,18 @@ Asset placeholder dosyaları:
 
 Hukuki metinler taslaktır. App Store veya Google Play yayını öncesinde gizlilik politikası ve kullanım şartları hukuki danışmanlıkla gözden geçirilmelidir.
 
-Sprint 5 paketi gerçek ödeme entegrasyonu eklemez. RevenueCat ileride bağlanacak şekilde Sprint 4 placeholder servisi korunur.
+Sprint 5 paketi yayın metinleri ve hukuki taslakları kapsar. Güncel premium satın alma akışı RevenueCat servis dosyası üzerinden yönetilir.
 
 ## Sprint 6 - EAS ve TestFlight Hazırlığı
 
-RevenueCat hazırlığı üretim yapısına yaklaştırıldı, ancak gerçek ödeme entegrasyonu hala mock çalışır. Gerçek RevenueCat API keyleri repo içine yazılmamalı; `.env` veya EAS secrets üzerinden verilmelidir.
+RevenueCat hazırlığı üretim yapısına yaklaştırıldı. Gerçek RevenueCat API keyleri repo içine yazılmamalı; `.env` veya EAS secrets üzerinden verilmelidir.
 
 RevenueCat hazırlığı:
 
 - Entitlement adı: `premium`
 - Paketler: `monthly`, `yearly`, `lifetime`
 - Placeholder env alanları: `EXPO_PUBLIC_REVENUECAT_IOS_API_KEY`, `EXPO_PUBLIC_REVENUECAT_ANDROID_API_KEY`
-- TODO notları: `src/services/premiumService.ts`
+- App Store ürün id'leri: `premium_monthly`, `premium_yearly`, `premium_lifetime`
 
 EAS build profilleri `eas.json` içinde hazırdır:
 
@@ -136,7 +138,7 @@ Yayın checklistleri:
 - `store/testflight-checklist-tr.md`
 - `store/google-play-checklist-tr.md`
 
-RevenueCat bağlanmadan önce App Store Connect ve Google Play Console içinde subscription product kayıtları hazırlanmalı, RevenueCat dashboard içinde `premium` entitlement ve `monthly`, `yearly`, `lifetime` paketleri eşleştirilmelidir.
+RevenueCat kullanmadan önce App Store Connect ve Google Play Console içinde ürün kayıtları hazırlanmalı, RevenueCat dashboard içinde `premium` entitlement ve `monthly`, `yearly`, `lifetime` paketleri eşleştirilmelidir.
 
 ## Sprint 7 - Görsel Hazırlık Paketi
 
@@ -174,6 +176,7 @@ App Store readiness dosyaları:
 - `store/app-store-ready/app-store-upload-checklist-tr.md`
 - `store/app-store-ready/testflight-steps-tr.md`
 - `store/app-store-ready/app-review-notes-tr.md`
+- `store/app-store-ready/app-review-response-tr.md`
 - `store/app-store-ready/app-privacy-answers-tr.md`
 - `store/app-store-ready/subscription-products-plan-tr.md`
 
@@ -186,6 +189,25 @@ Bu paket:
 - App Store Connect abonelik ürün planını
 
 tek yerde toplar.
+
+## Sprint 10 - RevenueCat Satın Alma Düzeltmesi
+
+Apple incelemesindeki mock ödeme reddini çözmek için premium satın alma ekranı RevenueCat SDK ile gerçek mağaza akışına bağlandı. iOS build number `6` yapıldı; App Store review için yeni binary yüklenmelidir.
+
+Premium ürün planı:
+
+- Entitlement: `premium`
+- Aylık abonelik: `premium_monthly`
+- Yıllık abonelik: `premium_yearly`
+- Ömür boyu erişim: `premium_lifetime`
+
+Önemli yayın notları:
+
+- App Store Connect'te Paid Apps Agreement aktif olmalıdır.
+- In-App Purchase ürünleri App Review için gönderilmelidir.
+- Her IAP ürünü için App Review screenshot eklenmelidir.
+- RevenueCat dashboard içinde ürünler `premium` entitlement altında eşleştirilmelidir.
+- Production/TestFlight build için `EXPO_PUBLIC_REVENUECAT_IOS_API_KEY` EAS secret olarak tanımlanmalıdır.
 
 ## Kontrol Komutları
 

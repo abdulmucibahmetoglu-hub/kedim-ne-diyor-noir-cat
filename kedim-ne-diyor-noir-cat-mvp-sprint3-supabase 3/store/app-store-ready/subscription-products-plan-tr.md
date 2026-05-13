@@ -6,9 +6,9 @@
 
 ## App Store Connect Ürün Kimlikleri
 
-- Monthly product id: `premium_monthly`
-- Yearly product id: `premium_yearly`
-- Lifetime product id: `premium_lifetime`
+- Monthly subscription product id: `premium_monthly`
+- Yearly subscription product id: `premium_yearly`
+- Lifetime non-consumable product id: `premium_lifetime`
 
 ## Fiyatlandırma
 
@@ -18,8 +18,22 @@
 
 ## Deneme Notu
 
-- Aylık veya yıllık plan için `3 gün ücretsiz deneme` kurgusu değerlendirilebilir.
+- Yıllık plan için `3 gün ücretsiz deneme` tanımlanmalı.
+- Deneme App Store Connect subscription offer/introductory offer alanından yapılandırılmalıdır.
 
 ## RevenueCat Eşleştirme Notu
 
-RevenueCat bağlanınca App Store Connect ürün id'leri RevenueCat dashboard içinde entitlement `premium` altında eşleştirilmelidir. Uygulamadaki mock premium akışı daha sonra gerçek satın alma ve restore çağrılarına çevrilmelidir.
+App Store Connect ürün id'leri RevenueCat dashboard içinde entitlement `premium` altında eşleştirilmelidir. Uygulama RevenueCat SDK ile gerçek satın alma ve restore çağrılarını kullanır.
+
+Önerilen RevenueCat paketleri:
+
+- `monthly` -> `premium_monthly`
+- `yearly` -> `premium_yearly`
+- `lifetime` -> `premium_lifetime`
+
+## App Store Review Gereksinimleri
+
+- Paid Apps Agreement aktif olmalı.
+- Her ürün için ad, açıklama, fiyat ve App Review screenshot girilmeli.
+- Ürünler uygulama build'iyle birlikte App Review'a gönderilmeli.
+- Yeni iOS binary build number: `6`.

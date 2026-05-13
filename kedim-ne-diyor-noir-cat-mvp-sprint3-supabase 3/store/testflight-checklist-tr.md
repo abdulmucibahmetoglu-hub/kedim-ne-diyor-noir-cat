@@ -28,7 +28,7 @@ eas build --platform ios --profile production
 - TestFlight internal testing grubu oluşturulmalı.
 - İlk build internal testing için seçilmeli.
 - Test kullanıcıları eklenmeli.
-- Ana akışlar test edilmeli: kedi profili, miyav analizi, premium mock akış, demo mod, Supabase bağlantı testi.
+- Ana akışlar test edilmeli: kedi profili, miyav analizi, RevenueCat premium satın alma/restore akışı, demo mod, Supabase bağlantı testi.
 
 ## Privacy Nutrition Labels
 
@@ -37,12 +37,14 @@ eas build --platform ios --profile production
 - Analiz geçmişi
 - Premium abonelik durumu
 - Supabase veri saklama kullanımı
-- Gelecekte RevenueCat abonelik verileri
+- RevenueCat abonelik verileri
 
 ## Subscription Product Hazırlığı
 
 - RevenueCat entitlement adı: `premium`
 - RevenueCat paketleri: `monthly`, `yearly`, `lifetime`
 - App Store Connect subscription product kayıtları hazırlanmalı.
+- App Store Connect ürünleri App Review'a gönderilmeli.
+- EAS production build için `EXPO_PUBLIC_REVENUECAT_IOS_API_KEY` secret olarak tanımlanmalı.
 - Gerçek RevenueCat API keyleri yalnız `.env` veya EAS secrets üzerinden verilmeli.
 - Secret key veya Supabase `service_role` key kullanılmamalı.

@@ -22,9 +22,9 @@ Supabase, kedi profili ve analiz geçmişi gibi uygulama verilerini saklamak iç
 
 Mobil uygulamada yalnızca public Supabase anon key kullanılmalıdır. Service role veya secret key mobil uygulamaya eklenmez.
 
-## Gelecekte RevenueCat Kullanımı
+## RevenueCat Kullanımı
 
-RevenueCat ileride premium abonelik durumunu yönetmek için entegre edilebilir. Bu durumda abonelik durumu, ürün bilgisi, satın alma ve geri yükleme durumu RevenueCat üzerinden işlenebilir. Gerçek ödeme işlemleri App Store veya Google Play tarafından yönetilir.
+RevenueCat premium abonelik durumunu yönetmek için kullanılabilir. Bu durumda abonelik durumu, ürün bilgisi, satın alma ve geri yükleme durumu RevenueCat üzerinden işlenebilir. Gerçek ödeme işlemleri App Store veya Google Play tarafından yönetilir.
 
 ## Verilerin Kullanım Amaçları
 

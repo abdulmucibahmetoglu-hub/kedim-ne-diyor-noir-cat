@@ -16,7 +16,7 @@ Bu sürümde:
 - Bakım takvimi
 - Premium kilit sistemi
 - Günlük 3 ücretsiz analiz hakkı
-- Mock premium satın alma ve geri yükleme akışı
+- RevenueCat destekli premium satın alma ve geri yükleme hazırlığı
 - Supabase destekli demo mod
 
 Not: Bu uygulama eğlence ve bakım desteği amaçlıdır. Veteriner teşhisi veya tıbbi tavsiye yerine geçmez.

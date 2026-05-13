@@ -23,7 +23,7 @@
         "NSCameraUsageDescription": "Kedi fotoğrafı ve davranış analizi için kamera erişimi gerekir.",
         "NSPhotoLibraryUsageDescription": "Kedi profil fotoğrafı seçmek için fotoğraf erişimi gerekir."
       },
-      "buildNumber": "5"
+      "buildNumber": "6"
     },
     "android": {
       "package": "com.noircat.kedimnediyor",

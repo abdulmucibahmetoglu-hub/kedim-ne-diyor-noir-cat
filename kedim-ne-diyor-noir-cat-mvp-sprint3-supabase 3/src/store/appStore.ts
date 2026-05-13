@@ -1,7 +1,15 @@
 import { create } from "zustand";
 import { Analysis, CatProfile } from "@/types";
 import { demoAnalyses, demoCat } from "@/data/mock";
-import { activateMockPremium, getPremiumStatus, getRemainingDailyAnalyses, recordDailyAnalysis, restorePurchases } from "@/services/premiumService";
+import {
+  activateDeveloperPremium,
+  getPremiumStatus,
+  getRemainingDailyAnalyses,
+  purchasePremiumPackage,
+  recordDailyAnalysis,
+  restorePurchases
+} from "@/services/premiumService";
+import type { PremiumPlanId, PremiumPurchaseResult } from "@/services/premiumService";
 
 type AppState = {
   isPremium: boolean;
@@ -11,8 +19,9 @@ type AppState = {
   analyses: Analysis[];
   backendStatus: string;
   loadPremiumState: () => Promise<void>;
-  setPremium: (value: boolean) => Promise<void>;
-  restorePremium: () => Promise<void>;
+  purchasePremium: (planId: PremiumPlanId) => Promise<PremiumPurchaseResult>;
+  restorePremium: () => Promise<PremiumPurchaseResult>;
+  activateDeveloperPremium: () => Promise<PremiumPurchaseResult>;
   refreshDailyAnalyses: () => Promise<void>;
   consumeDailyAnalysis: () => Promise<number | null>;
   setCat: (cat: CatProfile) => void;
@@ -34,15 +43,26 @@ export const useAppStore = create<AppState>((set) => ({
     const remainingDailyAnalyses = await getRemainingDailyAnalyses();
     set({ isPremium, remainingDailyAnalyses, premiumLoaded: true });
   },
-  setPremium: async (value) => {
-    if (value) await activateMockPremium();
-    const remainingDailyAnalyses = await getRemainingDailyAnalyses();
-    set({ isPremium: value, remainingDailyAnalyses, premiumLoaded: true });
-  },
-  restorePremium: async () => {
-    const isPremium = await restorePurchases();
+  purchasePremium: async (planId) => {
+    const result = await purchasePremiumPackage(planId);
+    const isPremium = await getPremiumStatus();
     const remainingDailyAnalyses = await getRemainingDailyAnalyses();
     set({ isPremium, remainingDailyAnalyses, premiumLoaded: true });
+    return result;
+  },
+  restorePremium: async () => {
+    const result = await restorePurchases();
+    const isPremium = await getPremiumStatus();
+    const remainingDailyAnalyses = await getRemainingDailyAnalyses();
+    set({ isPremium, remainingDailyAnalyses, premiumLoaded: true });
+    return result;
+  },
+  activateDeveloperPremium: async () => {
+    const result = await activateDeveloperPremium();
+    const isPremium = await getPremiumStatus();
+    const remainingDailyAnalyses = await getRemainingDailyAnalyses();
+    set({ isPremium, remainingDailyAnalyses, premiumLoaded: true });
+    return result;
   },
   refreshDailyAnalyses: async () => {
     const remainingDailyAnalyses = await getRemainingDailyAnalyses();

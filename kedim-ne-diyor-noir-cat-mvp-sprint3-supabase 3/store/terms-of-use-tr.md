@@ -31,7 +31,7 @@ Kullanıcı:
 
 Premium özellikler aylık, yıllık veya ömür boyu planlarla sunulabilir. Premium özellikler arasında sınırsız analiz, kediye özel AI hafıza, uzun dönem analiz geçmişi, foto/video analiz ve reklamsız deneyim yer alabilir.
 
-Bu sprintte ödeme akışı mock olarak hazırlanmıştır. Gerçek ödeme entegrasyonu yapıldığında satın alma, yenileme ve abonelik yönetimi App Store veya Google Play ödeme sistemleri üzerinden yürütülür.
+Satın alma, yenileme, iptal ve abonelik yönetimi App Store veya Google Play ödeme sistemleri üzerinden yürütülür. Ömür boyu erişim tek seferlik mağaza içi satın alma olarak sunulabilir.
 
 ## İptal ve Geri Ödeme
 

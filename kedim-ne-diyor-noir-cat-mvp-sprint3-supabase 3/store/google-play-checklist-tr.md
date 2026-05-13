@@ -26,7 +26,7 @@ eas build --platform android --profile production
 
 - Internal testing track oluşturulmalı.
 - Test kullanıcıları veya test listesi eklenmeli.
-- Ana akışlar test edilmeli: kedi profili, miyav analizi, premium mock akış, demo mod, Supabase bağlantı testi.
+- Ana akışlar test edilmeli: kedi profili, miyav analizi, RevenueCat premium satın alma/restore akışı, demo mod, Supabase bağlantı testi.
 
 ## Data Safety Form
 
@@ -35,7 +35,7 @@ eas build --platform android --profile production
 - Analiz geçmişi
 - Premium abonelik durumu
 - Supabase veri saklama kullanımı
-- Gelecekte RevenueCat abonelik verileri
+- RevenueCat abonelik verileri
 
 ## Subscription Product Hazırlığı
 
