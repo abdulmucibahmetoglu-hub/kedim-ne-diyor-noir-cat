@@ -179,6 +179,7 @@ App Store readiness dosyaları:
 - `store/app-store-ready/app-review-response-tr.md`
 - `store/app-store-ready/app-privacy-answers-tr.md`
 - `store/app-store-ready/subscription-products-plan-tr.md`
+- `store/app-store-ready/revenuecat-eas-final-steps-tr.md`
 
 Bu paket:
 
@@ -208,6 +209,7 @@ Premium ürün planı:
 - Her IAP ürünü için App Review screenshot eklenmelidir.
 - RevenueCat dashboard içinde ürünler `premium` entitlement altında eşleştirilmelidir.
 - Production/TestFlight build için `EXPO_PUBLIC_REVENUECAT_IOS_API_KEY` EAS secret olarak tanımlanmalıdır.
+- Apple Guideline 2.1(b) düzeltmesi için son RevenueCat + EAS adımları `store/app-store-ready/revenuecat-eas-final-steps-tr.md` dosyasındadır.
 
 ## Kontrol Komutları
 
